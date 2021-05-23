@@ -5,6 +5,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
+                sh 'docker rmi simplepy -f'
                 sh 'docker build . -t simplepy'
             }
         }
@@ -16,7 +17,7 @@ pipeline {
 
         stage('Run app') {
             steps {
-                sh 'docker run -p 5000:5000 -d simplepy'
+                sh 'docker run -p 5000:5000 -d --name=simplepy_instance simplepy'
             }
         }
     }
