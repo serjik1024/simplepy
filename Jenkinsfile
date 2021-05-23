@@ -3,9 +3,14 @@ pipeline {
     agent any
 
     stages {
+        stage('Cleanup') {
+            steps {
+                sh 'docker rm -f simplepy_instance'
+                sh 'docker rmi -f simplepy'
+            }
+        }
         stage('Build') {
             steps {
-                sh 'docker rmi simplepy -f'
                 sh 'docker build . -t simplepy'
             }
         }
