@@ -5,18 +5,18 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'sudo -sH docker build . -t simpleapp'
+                sh 'sudo docker build . -t simpleapp'
             }
         }
         stage('Unit test') {
             steps {
-                sh 'sudo -sH docker run simplepy pytest -v'
+                sh 'sudo docker run simplepy pytest -v'
             }
         }
 
         stage('Run app') {
             steps {
-                sh 'sudo -sH docker run simplepy'
+                sh 'sudo docker run simplepy'
             }
         }
     }
