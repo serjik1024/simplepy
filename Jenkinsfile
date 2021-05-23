@@ -16,7 +16,7 @@ pipeline {
 
         stage('Run app') {
             steps {
-                sh 'docker run simplepy'
+                sh 'docker run simplepy -d'
             }
         }
     }
